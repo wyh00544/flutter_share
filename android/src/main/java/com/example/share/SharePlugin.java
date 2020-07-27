@@ -22,11 +22,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 /** SharePlugin */
-public class SharePlugin implements FlutterPlugin, MethodCallHandler {
-  /// The MethodChannel that will the communication between Flutter and native Android
-  ///
-  /// This local reference serves to register the plugin with the Flutter Engine and unregister it
-  /// when the Flutter Engine is detached from the Activity
+public class SharePlugin implements MethodCallHandler {
 
   public static String CHANNEL = "channel:share_plugin";
 
@@ -39,18 +35,6 @@ public class SharePlugin implements FlutterPlugin, MethodCallHandler {
   public SharePlugin(Activity activity) {
     this.activity = activity;
   }
-
-  public SharePlugin() {
-  }
-
-
-
-  @Override
-  public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-    channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), CHANNEL);
-    channel.setMethodCallHandler(this);
-  }
-
 
   public static void registerWith(Registrar registrar) {
 
@@ -76,11 +60,6 @@ public class SharePlugin implements FlutterPlugin, MethodCallHandler {
     }
   }
 
-  @Override
-  public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-    channel.setMethodCallHandler(null);
-  }
-
 
   private void shareText(String content){
     Intent shareIntent = new Intent();
@@ -88,7 +67,7 @@ public class SharePlugin implements FlutterPlugin, MethodCallHandler {
     shareIntent.setType("text/plain");
     shareIntent.putExtra(Intent.EXTRA_TEXT, content);
 //切记需要使用Intent.createChooser，否则会出现别样的应用选择框，您可以试试
-    shareIntent = Intent.createChooser(shareIntent, "Here is the title of Select box");
+    shareIntent = Intent.createChooser(shareIntent, "分享到");
     activity.startActivity(shareIntent);
 
   }
@@ -108,7 +87,7 @@ public class SharePlugin implements FlutterPlugin, MethodCallHandler {
     shareIntent.putExtra(Intent.EXTRA_STREAM, imgUri);
     shareIntent.setType("image/*");
 //切记需要使用Intent.createChooser，否则会出现别样的应用选择框，您可以试试
-    shareIntent = Intent.createChooser(shareIntent, "Here is the title of Select box");
+    shareIntent = Intent.createChooser(shareIntent, "分享到");
     activity.startActivity(shareIntent);
 
   }

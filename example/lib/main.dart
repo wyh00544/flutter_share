@@ -49,8 +49,8 @@ class _MyAppState extends State<MyApp> {
               child: Text('Running on: $_platformVersion\n'),
             ),
 
-            onTap: () {
-              _saveImage();
+            onTap: () async {
+              await Share.shareText("1111");
 
             },
           ),
