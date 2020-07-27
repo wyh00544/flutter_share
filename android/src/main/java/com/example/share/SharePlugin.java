@@ -26,20 +26,20 @@ public class SharePlugin implements MethodCallHandler {
 
   public static String CHANNEL = "channel:share_plugin";
 
+
+  private static Activity activity;
+
   static MethodChannel channel;
 
 
-  private Activity activity;
-
-
-  public SharePlugin(Activity activity) {
-    this.activity = activity;
+  public SharePlugin() {
   }
 
-  public static void registerWith(Registrar registrar) {
 
-    SharePlugin sharePlugin = new SharePlugin(registrar.activity());
-    final MethodChannel channel = new MethodChannel(registrar.messenger(), CHANNEL);
+  public static void registerWith(Registrar registrar) {
+    activity = registrar.activity();
+    SharePlugin sharePlugin = new SharePlugin();
+    channel = new MethodChannel(registrar.messenger(), CHANNEL);
     channel.setMethodCallHandler(sharePlugin);
   }
 
@@ -111,7 +111,5 @@ public class SharePlugin implements MethodCallHandler {
     return myCaptureFile;
 
   }
-
-
 
 }
