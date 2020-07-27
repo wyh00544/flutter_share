@@ -12,9 +12,17 @@ dependencies:
   flutter:
     sdk: flutter
 
+
+  #图片保存到图库
+  image_gallery_saver: ^1.1.0
+
+  # toast库
+  fluttertoast: ^4.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

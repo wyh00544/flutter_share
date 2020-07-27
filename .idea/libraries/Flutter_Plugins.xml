@@ -2,6 +2,8 @@
   <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
     <CLASSES>
       <root url="file://$PROJECT_DIR$" />
+      <root url="file://$PROJECT_DIR$/../../flutter_development/flutter/.pub-cache/hosted/pub.flutter-io.cn/fluttertoast-4.0.1" />
+      <root url="file://$PROJECT_DIR$/../../flutter_development/flutter/.pub-cache/hosted/pub.flutter-io.cn/image_gallery_saver-1.5.0" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

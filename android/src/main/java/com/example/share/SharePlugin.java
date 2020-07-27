@@ -63,11 +63,13 @@ public class SharePlugin implements FlutterPlugin, MethodCallHandler {
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
     if (call.method.equals("shareText")) {
 
-      shareText((String) call.arguments());
+      String con = call.argument("content");
+      shareText(con);
       result.success("success");
 
     } else if(call.method.equals("shareImage")){
-      shareImage((byte[]) call.arguments());
+      byte[] image = call.argument("content");
+      shareImage(image);
       result.success("success");
     } else {
       result.notImplemented();

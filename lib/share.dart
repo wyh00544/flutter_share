@@ -10,13 +10,15 @@ class Share {
 
 
   static Future<String> shareText(String content) async {
-    var result = await _channel.invokeMethod('shareText',content);
+    assert(content != null && content.isNotEmpty);
+    var result = await _channel.invokeMethod('shareText',{"content": content});
     return result;
   }
 
 
   static Future<String> shareImage(Uint8List content) async {
-    var result = await _channel.invokeMethod('shareImage',content);
+    assert(content != null && content.isNotEmpty);
+    var result = await _channel.invokeMethod('shareImage',{"content": content});
     return result;
   }
 }
